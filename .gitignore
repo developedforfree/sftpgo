@@ -1,3 +1,8 @@
 # compilation output
 sftpgo
 sftpgo.exe
+
+# SonarQube file(s)
+.scannerwork/**
+sonarqube-report.html
+/sonar-project.properties
