@@ -1,0 +1,32 @@
+name: Sonarqube
+
+on:
+  pull_request:
+
+jobs:
+  sonarqube:
+    name: SonarQube Quality and Static Analysis w/ Artifact
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup the SonarQube backend
+        run: ./sonarqube-setup.sh
+
+      - name: List the docker instances
+        run: docker ps
+
+      - name: Run the SonarQube Analysis
+        run: ./sonarqube-scan.sh
+
+      - name: Generate the SonarQube HTML Report
+        run: ./sonarqube-report.sh
+
+      - name: Upload SonarQube HTML Report
+        uses: actions/upload-artifact@v3
+        with:
+          path: sonarqube-report.html
+
+      - name: Verify the SonarQube Quality Gate has Passed
+        run: ./sonarqube-report.sh

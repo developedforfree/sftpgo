@@ -253,6 +253,12 @@ The `revertprovider` command is not supported for the memory provider.
 
 Please note that we only support the current release branch and the current main branch, if you find a bug it is better to report it rather than downgrading to an older unsupported version.
 
+## Test(s)
+
+CodeQL is used to semantically evaluate the code for security issue(s) that may be present.
+
+SonarQube is used to evaluate for common security issues across a broader list of languages as well as ensure best-practices for things like Accessibility are met. Please note that the pipeline will only fail if the SonarQube rules are severe enough to result in a failure, but a report is attached to each PR as an artifact. You can also execute the appropriate bash scripts to run a report locally.
+
 ## Users, groups, folders and other resource management
 
 After starting SFTPGo you can manage users, groups, folders and other resources using:
